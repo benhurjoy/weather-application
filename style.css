@@ -1,0 +1,187 @@
+/* ====== GLOBAL STYLES ====== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    background: #000; /* fallback if video fails */
+}
+
+/* ====== BACKGROUND VIDEO ====== */
+.video-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    background: black;
+    object-fit: cover;
+}
+
+/* ====== MAIN CARD (Glassmorphism) ====== */
+#main {
+    background: rgba(255, 255, 255, 0.15); /* semi-transparent */
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border-radius: 20px;
+    padding: 30px 25px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Hover effect */
+#main:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+
+/* ====== SEARCH BAR ====== */
+#search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#city {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    backdrop-filter: blur(5px);
+}
+
+#city::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+#search button {
+    background: rgba(0, 123, 255, 0.8);
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+#search button:hover {
+    transform: scale(1.05);
+    background: rgba(0, 86, 179, 0.85);
+}
+
+/* ====== TEMPERATURE DISPLAY ====== */
+#temp h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+#temp h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 10px 0;
+    color: #fff;
+}
+
+#temp img {
+    margin-top: 8px;
+}
+
+#temp h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.8;
+    color: #fff;
+}
+
+/* ====== FORECAST SECTION ====== */
+#todayforecast {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+/* Forecast Cards (Glass Style) */
+.forecast-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    border-radius: 12px;
+    text-align: center;
+    min-width: 80px;
+    padding: 12px;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.forecast-card:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.forecast-card h4 {
+    font-size: 0.9rem;
+    margin: 4px 0;
+    color: #fff;
+}
+
+.forecast-card img {
+    width: 45px;
+}
+
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 480px) {
+    #main {
+        padding: 20px 15px;
+    }
+
+    #temp h1 {
+        font-size: 2.5rem;
+    }
+
+    #temp h3, #temp h5 {
+        font-size: 1rem;
+    }
+
+    .forecast-card {
+        min-width: 70px;
+        padding: 10px;
+    }
+
+    #search button {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    #main {
+        max-width: 360px;
+    }
+
+    #temp h1 {
+        font-size: 2.8rem;
+    }
+}
