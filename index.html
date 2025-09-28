@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌤️ Weather application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="main">
+    <div id="search">
+    <input type="text" placeholder="search for location" id="city">
+    <button onclick="getData()"class="btn btn-primary">search</button>
+    </div>
+    <div id="temp"></div>
+    <div id="todayforecast">
+    </div>
+    <video autoplay muted loop playsinline class="video-bg">
+  <source src="./assests/2888383-uhd_3840_2160_24fps.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
