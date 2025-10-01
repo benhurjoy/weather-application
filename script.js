@@ -2,7 +2,7 @@ let key="293e9bf1b62a4cd5a9055120250708"
 async function getData() {
       let requestedCity=document.getElementById("city")
       let city=requestedCity.value
-      let API=`http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`
+      let API=`https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`
       let res=await axios.get(API)  
       displaydata(res)
       todayForecast(res)
