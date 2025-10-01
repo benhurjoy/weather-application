@@ -7,45 +7,41 @@ body {
     justify-content: center;
     align-items: center;
     color: #fff;
-    overflow: hidden;
+    overflow-x: hidden; /* prevent side scroll */
     background: #000; /* fallback if video fails */
 }
 
 /* ====== BACKGROUND VIDEO ====== */
 .video-bg {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    background: black;
+    top: 0;
+    left: 0;
+    width: 100%;     /* full width */
+    height: 100%;    /* full height */
     object-fit: cover;
-    opacity: 0.5;
+    z-index: -1;
+    opacity: 0.6;    /* slightly dim for better readability */
+    background: #000;
 }
 
 /* ====== MAIN CARD (Glassmorphism) ====== */
 #main {
-    background: rgba(255, 255, 255, 0.15); /* semi-transparent */
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(12px) saturate(150%);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
     border-radius: 20px;
-    padding: 30px 25px;
+    padding: 25px 20px;
     width: 90%;
     max-width: 420px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
     text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* Hover effect */
 #main:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* ====== SEARCH BAR ====== */
@@ -58,21 +54,21 @@ body {
 #city {
     flex: 1;
     padding: 12px 14px;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     outline: none;
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.18);
     color: #fff;
     backdrop-filter: blur(5px);
 }
 
 #city::placeholder {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 #search button {
-    background: rgba(0, 123, 255, 0.8);
+    background: rgba(0, 123, 255, 0.85);
     color: #fff;
     font-weight: bold;
     padding: 12px 16px;
@@ -85,22 +81,20 @@ body {
 
 #search button:hover {
     transform: scale(1.05);
-    background: rgba(0, 86, 179, 0.85);
+    background: rgba(0, 86, 179, 0.9);
 }
 
 /* ====== TEMPERATURE DISPLAY ====== */
 #temp h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 500;
     margin-bottom: 5px;
-    color: #fff;
 }
 
 #temp h1 {
     font-size: 3rem;
     font-weight: 700;
     margin: 10px 0;
-    color: #fff;
 }
 
 #temp img {
@@ -110,8 +104,7 @@ body {
 #temp h5 {
     font-size: 1rem;
     font-weight: 400;
-    opacity: 0.8;
-    color: #fff;
+    opacity: 0.85;
 }
 
 /* ====== FORECAST SECTION ====== */
@@ -123,7 +116,6 @@ body {
     margin-top: 15px;
 }
 
-/* Forecast Cards (Glass Style) */
 .forecast-card {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px) saturate(120%);
@@ -132,25 +124,23 @@ body {
     text-align: center;
     min-width: 80px;
     padding: 12px;
-    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .forecast-card:hover {
     transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .forecast-card h4 {
     font-size: 0.9rem;
     margin: 4px 0;
-    color: #fff;
 }
 
 .forecast-card img {
     width: 45px;
 }
-
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 480px) {
@@ -159,7 +149,7 @@ body {
     }
 
     #temp h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
 
     #temp h3, #temp h5 {
