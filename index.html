@@ -3,25 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌤️ Weather application</title>
+    <title>🌤️ Weather Application</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="main">
-    <div id="search">
-    <input type="text" placeholder="search for location" id="city">
-    <button onclick="getData()"class="btn btn-primary">search</button>
+    <!-- Loading Animation -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="weather-loader">
+                <div class="sun"></div>
+                <div class="cloud"></div>
+                <div class="rain">
+                    <div class="drop"></div>
+                    <div class="drop"></div>
+                    <div class="drop"></div>
+                </div>
+            </div>
+            <h2 class="loading-text">Loading Weather App</h2>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
     </div>
-    <div id="temp"></div>
-    <div id="todayforecast">
+
+    <div class="video-container">
+        <video autoplay muted loop playsinline class="video-bg" id="bg-video" oncanplaythrough="hideLoadingScreen()">
+            <source src="./assests/2888383-uhd_3840_2160_24fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Fallback background in case video doesn't load -->
+        <div class="fallback-bg"></div>
     </div>
-    <video autoplay muted loop playsinline class="video-bg">
-  <source src="./assests/2888383-uhd_3840_2160_24fps.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+    <div class="container-fluid main-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <div class="weather-card">
+                    <h1 class="app-title text-center mb-4">Weather Forecast</h1>
+                    
+                    <div class="search-container mb-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for a city..." id="city">
+                            <button class="btn btn-primary" onclick="getWeatherData()">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Temperature Toggle Button -->
+                    <div class="text-center mb-3">
+                        <div class="btn-group" role="group">
+                            <input type="radio" class="btn-check" name="temperature-unit" id="celsius" autocomplete="off" checked onclick="toggleTemperatureUnit('c')">
+                            <label class="btn btn-outline-primary" for="celsius">°C</label>
+                            
+                            <input type="radio" class="btn-check" name="temperature-unit" id="fahrenheit" autocomplete="off" onclick="toggleTemperatureUnit('f')">
+                            <label class="btn btn-outline-primary" for="fahrenheit">°F</label>
+                        </div>
+                    </div>
+
+                    <div class="current-weather text-center mb-5" id="current-weather">
+                        <div class="location mb-3">
+                            <h2 id="location-name">New York</h2>
+                            <p id="current-date" class="text-muted">Loading date...</p>
+                        </div>
+                        <div class="weather-icon mb-3">
+                            <i class="fas fa-sun" id="weather-icon"></i>
+                        </div>
+                        <div class="temperature">
+                            <h1 id="current-temp">--°C</h1>
+                            <p id="weather-description">Loading...</p>
+                        </div>
+                        <div class="weather-details mt-4">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="detail-item">
+                                        <i class="fas fa-wind"></i>
+                                        <p>Wind</p>
+                                        <span id="wind-speed">-- km/h</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="detail-item">
+                                        <i class="fas fa-tint"></i>
+                                        <p>Humidity</p>
+                                        <span id="humidity">--%</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="detail-item">
+                                        <i class="fas fa-temperature-low"></i>
+                                        <p>Feels Like</p>
+                                        <span id="feels-like">--°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="forecast-section">
+                        <h3 class="section-title mb-3">3-Day Forecast</h3>
+                        <div class="row" id="forecast-container">
+                            <!-- Forecast items will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
